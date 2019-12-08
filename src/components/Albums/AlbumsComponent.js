@@ -3,7 +3,7 @@ import Loading from '../Navigation/LoadingComponent';
 import ApiSpotify from '../../utils/ApiSpotify';
 import { AlbumCard } from '../CardComponent.js/AlbumCard';
 
-import './style.scss'
+
 export function AlbumsComponent() {
   const [data, setData] = useState(false);
   useEffect(() => {
@@ -21,7 +21,6 @@ export function AlbumsComponent() {
 
   if (!data) return <Loading />
   return (<>
-
     {data && data.length > 1 && data.map(({ id, name, album_type, release_date, artists, images }) => {
       return <AlbumCard
         key={id}

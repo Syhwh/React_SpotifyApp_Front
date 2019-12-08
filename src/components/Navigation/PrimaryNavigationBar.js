@@ -4,7 +4,7 @@ import { AuthContext } from '../../utils/AuthContext';
 import { Navbar, Nav, NavItem, Container } from 'react-bootstrap';
 import logo from '../../assets/banner-ico.png'
 import './style.scss';
-export function NavBarComponent() {
+export function PrimaryNavigationBar() {
   const { user } = useContext(AuthContext);
   return (
     <Navbar bg='dark' variant='dark'>
@@ -23,7 +23,7 @@ export function NavBarComponent() {
         <Nav className='mr-auto'>
           <Link className=' navbar-nav nav-link ' to='/'>Home</Link>
           {!user &&
-            <Link to='/' className=' navbar-nav nav-link ' onClick={() => window.location = 'http://localhost:3001/login'}>Login</Link>
+            <Link to='/login' className=' navbar-nav nav-link '>Login</Link>
           }
           {user && <>
             <Link className=' navbar-nav nav-link ' to='/profile'>Profile</Link>

@@ -1,7 +1,8 @@
 import React from 'react';
-import { NavBarComponent } from './NavBarComponent';
+import { PrimaryNavigationBar } from './PrimaryNavigationBar';
+//import { SecondaryNavigationBar } from 'SecondaryNavigationBar';
 export function NavigationComponent() {
   return (<>
-    <NavBarComponent />
+    <PrimaryNavigationBar />
   </>)
 }

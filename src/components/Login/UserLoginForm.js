@@ -69,10 +69,12 @@ function UserLoginForm({ error, loginUser, loginAgency }) {
                     <button className='btn btn-primary' type='submit' disabled={isSubmitting}> Login </button>
                   </div>
                 </Form>
+                <div className='mt-4'>Login with your spotify account <Link to='/' onClick={() => window.location = 'http://localhost:3001/login'}  >Login</Link> </div>
                 <div className='mt-4'>Doesn't have an account? <Link to='/signUp'>SignUp</Link> </div>
               </div>
             </div>
           </div>
+          //  
         );
       }}
     </Formik>

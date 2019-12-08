@@ -1,0 +1,7 @@
+.footer {
+  background: rgba(51, 51, 51, 1)
+    url(//static-reality.inwavethemes.com/wp-content/themes/reality/assets/images/bg-middle-footer.jpg)
+    no-repeat top center;
+  background-size: cover;
+  color: white !important;
+}
