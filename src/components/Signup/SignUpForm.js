@@ -3,14 +3,11 @@ import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { signUpUser } from '../../redux/actions/userActions';
-import { signUpAgency } from '../../redux/actions/agencyActions';
 import { Form as FormB, Alert } from 'react-bootstrap';
 import { Form, Field, ErrorMessage, Formik } from 'formik';
 import * as Yup from 'yup';
 
-import { Checkbox } from 'semantic-ui-react';
-import './style.css';
-const CheckboxExampleToggle = () => <Checkbox toggle />
+import './signupStyle.scss';
 
 const loginSchema = Yup.object().shape({
   typeAccount: Yup.string().required('You must select an Account Type'),
@@ -40,7 +37,7 @@ function SignUpForm({ error, signUpUser, signUpAgency }) {
       }}
       validationSchema={loginSchema}
       onSubmit={(values, { resetForm, setSubmitting }) => {
-        values.typeAccount === 'angency' ? signUpAgency(values) : signUpUser(values);
+        signUpUser(values);
         resetForm();
         setSubmitting(false);
         history.push('/login');
@@ -57,11 +54,11 @@ function SignUpForm({ error, signUpUser, signUpAgency }) {
                     <div className=' form-group'>
                       <label htmlFor='userEmail' >Email</label>
                       <Field type="email" name='userEmail' placeholder='Email' className='form-control' />
-                      <ErrorMessage className=' has-danger' name='userEmail' />
+                      <ErrorMessage name='userEmail' >
+                        {msg => <div className=' alert alert-danger mt-1' role='alert'>{msg}</div>}
+                      </ErrorMessage>
                       <FormB.Text className="text-muted">
-                        <p>
-                          We'll never share your email with anyone else.
-                 </p>
+                        <p>   We'll never share your email with anyone else.  </p>
                       </FormB.Text>
                     </div>
                     <div className=' form-group'>
@@ -72,7 +69,9 @@ function SignUpForm({ error, signUpUser, signUpAgency }) {
                         placeholder='Write your password'
                         className='form-control'
                       />
-                      <ErrorMessage className='errorMessage' name='userPassword' />
+                        <ErrorMessage name='userPassword' >
+                        {msg => <div className=' alert alert-danger mt-1' role='alert'>{msg}</div>}
+                      </ErrorMessage>
                     </div>
                     <div>
                       <label htmlFor="userPasswordConfirm">Confirm Password</label>
@@ -81,13 +80,17 @@ function SignUpForm({ error, signUpUser, signUpAgency }) {
                         name='userPasswordConfirm'
                         placeholder='Repeat your password'
                         className='form-control' />
-                      <ErrorMessage className='errorMessage' name='userPasswordConfirm' />
+                      <ErrorMessage name='userPasswordConfirm' >
+                        {msg => <div className=' alert alert-danger mt-1' role='alert'>{msg}</div>}
+                      </ErrorMessage>
                     </div>
                     <div className=' form-group mt-4'>
                       <Field
-                        className='ui fitted toggle checkbox' type='checkbox' name='termsAndConditions' />
+                        className='ui fitted toggle checkbox mr-2' type='checkbox' name='termsAndConditions' />
                       <label htmlFor='termsAndConditions'> I accept the terms and conditions</label>
-                      <div> <ErrorMessage className='errorMessage' name='termsAndConditions' /></div>
+                      <ErrorMessage name='termsAndConditions' >
+                        {msg => <div className=' alert alert-danger mt-1' role='alert'>{msg}</div>}
+                      </ErrorMessage>
                     </div>
                     <div className='form-group mb-4'>
                       <button className='btn btn-primary' type='submit' disabled={isSubmitting}> Login </button>
@@ -110,6 +113,6 @@ const mapStateToProps = (store) => {
     error: store.user.error
   }
 }
-const mapDispatchToProps = { signUpUser, signUpAgency }
+const mapDispatchToProps = { signUpUser }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignUpForm)

@@ -1,9 +1,9 @@
-import ApiRE from '../../utils/ApiConfiguration';
+import ApiBackend from '../../utils/ApiBackend';
 import { USER_REGISTER, USER_LOGIN, USER_LOGOUT, USER_UPDATE, USER_INFO, ERROR } from './types';
 
 export function signUpUser(userData) {
   return function (dispatch) {
-    ApiRE.post('/register', userData)
+    ApiBackend.post('/register', userData)
       .then(({ data }) => {
         dispatch({
           type: USER_REGISTER,
@@ -23,7 +23,7 @@ export function signUpUser(userData) {
 
 export function loginUser(userData, callback) {
   return function (dispatch) {
-    ApiRE.post('/login', userData)
+    ApiBackend.post('/login', userData)
       .then(({ data }) => {
         console.log('response login user')
         console.log(data)
@@ -45,7 +45,7 @@ export function loginUser(userData, callback) {
 export function logOutUser() {
   return function (dispatch) {
     const token = localStorage.getItem('token')
-    ApiRE.post('/logout', null, {
+    ApiBackend.post('/logout', null, {
       headers: {
         authorization: token
       }
@@ -68,7 +68,7 @@ export function logOutUser() {
 export function editUser(id, userData) {
   return function (dispatch) {
     const token = localStorage.getItem('token')
-    ApiRE.put(`/user/${id}`, userData, {
+    ApiBackend.put(`/user/${id}`, userData, {
       headers: {
         authorization: token
       }
@@ -93,7 +93,7 @@ export function editUser(id, userData) {
 export function getUser(id) {
   return function (dispatch) {
     const token = localStorage.getItem('token')
-    ApiRE.get(`/user/${id}`, {
+    ApiBackend.get(`/user/${id}`, {
       headers: {
         authorization: token
       }

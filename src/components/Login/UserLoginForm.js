@@ -50,9 +50,10 @@ function UserLoginForm({ error, loginUser, loginAgency }) {
                   <FormB.Group controlId="formBasicEmail">
                     <FormB.Label>Email address</FormB.Label>
                     <Field type="email" name='userEmail' placeholder='Email' className='form-control' />
-                    <ErrorMessage name='userEmail' />
+                    <ErrorMessage name='userEmail' >
+                      {msg => <div className=' alert alert-danger mt-1' role='alert'>{msg}</div>}
+                    </ErrorMessage>
                   </FormB.Group>
-
                   <div className='form-group'>
                     <label htmlFor="passowrd">Confirm Password</label>
                     <Field
@@ -62,7 +63,9 @@ function UserLoginForm({ error, loginUser, loginAgency }) {
                       autoComplete="on"
                       className='form-control'
                     />
-                    <ErrorMessage name='userPassword' />
+                    <ErrorMessage name='userPassword' >
+                      {msg => <div className=' alert alert-danger mt-1' role='alert'>{msg}</div>}
+                    </ErrorMessage>
                   </div>
                   <div className='form-group mb-4'>
 

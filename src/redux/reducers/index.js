@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import userReducer from './userReducer';
-import propertyReducer from './propertyReducer';
-import agencyReducer from './agencyReducer';
+import listReducer from './listReducer';
+import apiReducer from './apiReducer';
 
 export default combineReducers({
     user: userReducer,
-    property: propertyReducer,
-    agency: agencyReducer
+    lists: listReducer,
+    apiData: apiReducer
 })

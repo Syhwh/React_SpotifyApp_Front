@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../utils/AuthContext';
-import { Navbar, Nav, NavItem, Container } from 'react-bootstrap';
+import { Navbar, Nav } from 'react-bootstrap';
 import logo from '../../assets/banner-ico.png'
 import './style.scss';
 export function PrimaryNavigationBar() {

@@ -4,7 +4,7 @@ import './style.scss';
 
 export function AlbumCard({ image, artist, title, type, date }) {
   return (<>
-    <Card style={{ width: '18rem' }} className='mt-4 ml-2 cardContent'>
+    <Card style={{ width: '18rem' }} className='mt-4 ml-2 cardContent pointer'>
       <Card.Img variant="top" src={image} className='albumImage' />
       <Card.ImgOverlay>
       </Card.ImgOverlay>
