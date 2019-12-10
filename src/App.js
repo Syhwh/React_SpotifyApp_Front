@@ -9,8 +9,10 @@ import { Profile } from './components/Profile';
 import SearchResults from './components/SearchResults';
 import ArtistInfo from './components/Artists/ArtistInfo';
 import { PrivateRoute } from './components/Navigation/PrivateRoute';
-//import 'bootstrap/dist/css/bootstrap.min.css';
-//import './App.css';
+import UserAlbums from './components/UserMusic/UserAlbums';
+import AlbumDetails from './components/AlbumDetails';
+import UserPlaylists from './components/Playlist';
+import PlayListDetails from './components/PlayListsDetails';
 import './assets/css/bootstrap.min.css'
 function App() {
   return (
@@ -18,14 +20,17 @@ function App() {
       <AuthProvider>
         <NavigationComponent />
         <Switch>
-          {/* <PrivateRoute exact path='/property' component={NewProperty} />
-          
+          {/*
           <PrivateRoute exact path='/profile/edit' component={UserProfileEdit} />
-          <PrivateRoute exact path='/dashboard' component={AgencyDashboard} /> */}
+         */}
+          <PrivateRoute exact path='/playlist' component={PlayListDetails} />
+          <PrivateRoute exact path='/playlists' component={UserPlaylists} />
+          <PrivateRoute exact path='/albums' component={UserAlbums} />
+          <PrivateRoute exact path='/profile' component={Profile} />
+          <Route exact path='/album' component={AlbumDetails} />
           <Route exact path='/artist' component={ArtistInfo} />
           <Route exact path='/signup' component={SignUpComponent} />
           <Route exact path='/search' component={SearchResults} />
-          <PrivateRoute exact path='/profile' component={Profile} />
           <Route exact path='/login' component={LoginComponent} />
           <Route exact path='/' component={Home} />
         </Switch>

@@ -12,21 +12,23 @@ export function AuthProvider({ children }) {
 
   //hooks first time run
   useEffect(() => {
-    const userToken = localStorage.getItem('userToken');
-    console.log(userToken)
+
+
 
     ApiBacked.get(`/spotify/${process.env.REACT_APP_SPOTIFY_CLIENT_ID}/${process.env.REACT_APP_SPOTIFY_CLIENT_SECRET}`)
       .then(({ data }) => {
         console.log(data.body)
         localStorage.setItem('appTkn', data.body.access_token)
       })
-
     const userAccessToken = queryString.parse(window.location.search);
     if (userAccessToken) {
       localStorage.setItem('userToken', userAccessToken.access_token);
+      
     }
-    
+
+    const userToken = localStorage.getItem('userToken');
     if (userToken) {
+      history.push('/profile')
       ApiSpotify.get(`/me`, {
         headers: {
           Authorization: `Bearer ${userToken}`
@@ -35,14 +37,12 @@ export function AuthProvider({ children }) {
         .then(({ data }) => {
           console.log(data)
           setUser(data)
+          console.log('user' + user)
+          history.push('/profile')
         })
         .catch((error) => console.log(error))
     }
-
-
-
   }, []);
-
 
 
   function authLoginUser(id) {

@@ -1,27 +1,22 @@
 import React from 'react';
 import { Table } from 'react-bootstrap';
-import './songsStyle.scss';
 
-export function TopSongsComponent({ data }) {
-
+export function AlbumTracks({ tracks }) {
   return (<>
-    <h3 className='mt-2'>Top Songs: </h3>
-    <Table responsive className='mt-2'>
+    <h3 className='mt-2'> Songs: </h3>
+    <Table responsive  hover className='mt-2'>
       <thead>
         <tr>
-          <th></th>
-          <th>Album</th>
-          <th>Song</th>
+          <th>#</th>
+          <th>Name</th>
           <th>Preview</th>
         </tr>
       </thead>
       <tbody>
-        {data.tracks && data.tracks.length > 1 && data.tracks.map(({ id, album, name, uri }) => {
+        {tracks && tracks.length > 1 && tracks.map(({ id, track_number, name, uri }) => {
           return (
-
             <tr key={id}>
-              <td><img src={album.images[0].url} className='img-thumb' /> </td>
-              <td>{album.name}</td>
+              <td> {track_number} </td>
               <td>{name}</td>
               <td>
                 <iframe src={`https://open.spotify.com/embed?uri=${uri}`} width='300' height='80' frameBorder='0' allowtransparency='true' allow='encrypted-media'></iframe>
@@ -31,9 +26,6 @@ export function TopSongsComponent({ data }) {
         })}
       </tbody>
     </Table>
-
-
   </>
-
   )
 }

@@ -13,8 +13,7 @@ export function Albums() {
         Authorization: `Bearer ${appToken}`
       }
     })
-      .then(({ data }) => {
-        console.log(data)
+      .then(({ data }) => {    
         setData(data.albums.items)
       })
   }, []);

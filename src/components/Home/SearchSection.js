@@ -8,11 +8,11 @@ export const SearchSection = () => {
         <div className="container pos-abs">
           <div className="row">
             <div className="col-md-10 offset-md-1">
-              <div className="header-text v1">
-                <h1>Enjoy The Music</h1>
+              <div className="header-text v2">
+                <h1>Enjoy Your Music</h1>
               </div>
             </div>
-            <div className='col-md-12'>
+            <div className='col-md-12 offset-2'>
               <SearchComponent className='searchComponent' />
             </div>
           </div>

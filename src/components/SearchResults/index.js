@@ -6,13 +6,18 @@ import { Row } from 'react-bootstrap';
 import { AlbumsComponent } from '../Albums/AlbumsComponent';
 import { ArtistsComponent } from '../Artists/ArtistsComponent';
 import { SongsComponent } from '../Songs/SongsComponent';
+import { SearchComponent } from '../SearchComponent'
 
 function SearchResults({ search }) {
   console.log(search)
   if (!search) return <Loading />
 
   return (<>
-    <h1 className='offset-1 mt-2'>Search Results:</h1>
+    <Row className='mt-4 offset-2'>
+      <h3 className='offset-1 mt-2'>Search :</h3>
+      <SearchComponent className='searchComponent' />
+    </Row>
+
     <Row>
       <h3 className='mt-2 col-6' >Albums:</h3>
     </Row>

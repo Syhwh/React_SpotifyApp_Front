@@ -26,6 +26,8 @@ export function PrimaryNavigationBar() {
             <Link to='/login' className=' navbar-nav nav-link '>Login</Link>
           }
           {user && <>
+            <Link className=' navbar-nav nav-link ' to='/albums'>My Music</Link>
+            <Link className=' navbar-nav nav-link ' to='/playlists'>My Playlists</Link>
             <Link className=' navbar-nav nav-link ' to='/profile'>Profile</Link>
             <Link className=' navbar-nav nav-link ' to='/logout'>Logout</Link>
           </>

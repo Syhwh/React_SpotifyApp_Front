@@ -15,6 +15,20 @@ export const LIST_SEARCH = 'LIST_SEARCH';
 //API actions
 export const API_SEARCH = 'API_SEARCH';
 export const GET_ARTIST = 'GET_ARTIST';
-export const GET_TOP_TRACKS = 'GET_TOP_TRACKS'
+export const GET_TOP_TRACKS = 'GET_TOP_TRACKS';
+export const GET_USER_INFO = 'GET_USER_INFO';
+
+export const GET_USER_ALBUMS = 'GET_USER_ALBUMS';
+export const SAVE_USER_ALBUM = 'SAVE_USER_ALBUM';
+export const DELETE_USER_ALBUM = 'DELETE_USER_ALBUM';
+export const GET_ALBUM_INFO = 'GET_ALBUM_INFO';
+export const GET_ALBUM_TRACKS = 'GET_ALBUM_TRACKS';
+
+export const GET_USER_PLAYLISTS = 'GET_USER_PLAYLISTS';
+export const CREATE_USER_PLAYLIST = 'CREATE_USER_PLAYLIST';
+export const EDIT_USER_PLAYLIST_INFO = 'EDIT_USER_PLAYLIST_INFO';
+export const DELETE_USER_PLAYLIST = 'DELETE_USER_PLAYLIST';
+export const GET_PLAYLIST_INFO = 'GET_PLAYLIST_INFO';
+
 //general actions
 export const ERROR = 'ERROR';

@@ -1,14 +1,15 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { getTopTracks } from '../../redux/actions/apiActions';
 import { Row, Container } from 'react-bootstrap';
 import Loading from '../Navigation/LoadingComponent';
 import { TopSongsComponent } from '../Songs/TopSongsComponent';
+import noImage from '../../assets/images/noimage.png';
 import './artistStyle.scss'
 
 function ArtistInfo({ artist, getTopTracks, tracks }) {
-  console.log(artist.id)
+  const history = useHistory();
   useEffect(() => {
     if (artist.id) {
       getTopTracks(artist.id)
@@ -19,12 +20,12 @@ function ArtistInfo({ artist, getTopTracks, tracks }) {
   return (
     <>
       <Container>
-
-
         <h1>Artist Details </h1>
         <Row>
           <div className='col-2'>
-            <img src={artist.images[0].url} className='img-thumbnail img-circle' />
+            <img src={
+              artist.images[0] ?
+                artist.images[0].url : noImage} className='img-thumbnail img-circle' />
           </div>
           <div className='col'>
             <h3>
@@ -37,9 +38,9 @@ function ArtistInfo({ artist, getTopTracks, tracks }) {
             </p>
           </div>
           <div className='col-4 text-right'>
-            <Link to='/' className='btn btn-outline-danger' >
+            <button onClick={() => history.goBack()} className='btn btn-outline-danger' >
               Go back
-    </Link>
+    </button>
           </div>
         </Row>
         <Row>
