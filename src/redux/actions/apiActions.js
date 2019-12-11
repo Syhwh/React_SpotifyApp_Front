@@ -1,5 +1,6 @@
 import ApiSpotify from '../../utils/ApiSpotify';
 import {
+  API_GET_NEW_RELEASES,
   API_SEARCH,
   GET_ARTIST,
   GET_TOP_TRACKS,
@@ -13,6 +14,24 @@ import {
   GET_PLAYLIST_INFO,
   ERROR
 } from './types';
+
+export function getNewReleases() {
+  return function (dispatch) {
+    const appToken = localStorage.getItem('appTkn');
+    ApiSpotify.get(`/browse/new-releases?limit=20`, {
+      headers: {
+        Authorization: `Bearer ${appToken}`
+      }
+    })
+      .then(({ data }) => {
+        dispatch({
+          type: API_GET_NEW_RELEASES,
+          payload: data.albums.items
+        });
+      })
+  }
+}
+
 
 
 
@@ -98,8 +117,6 @@ export function getUserAlbums() {
       }
     })
       .then(({ data }) => {
-        console.log('get user albums')
-        console.log(data)
         dispatch({
           type: GET_USER_ALBUMS,
           payload: data.items
@@ -117,7 +134,7 @@ export function getUserAlbums() {
 export function deleteUserAlbum(albumId) {
   return function (dispatch) {
     const userToken = localStorage.getItem('userToken')
-    console.log(userToken)
+
     ApiSpotify.delete(`/me/albums/`, {
       headers: {
         Authorization: `Bearer ${userToken}`
@@ -149,7 +166,6 @@ export function getAlbumInfo(albumId) {
       },
     })
       .then(({ data }) => {
-        console.log(data)
         dispatch({
           type: GET_ALBUM_INFO,
           payload: data
@@ -173,7 +189,7 @@ export function getUserPlaylists() {
       },
     })
       .then(({ data }) => {
-        console.log(data)
+
         dispatch({
           type: GET_USER_PLAYLISTS,
           payload: data

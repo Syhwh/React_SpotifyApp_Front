@@ -1,4 +1,5 @@
 import {
+  API_GET_NEW_RELEASES,
   API_SEARCH,
   GET_ARTIST,
   GET_TOP_TRACKS,
@@ -16,6 +17,7 @@ import {
 } from "../actions/types"
 
 const initialState = {
+  newReleases: '',
   searchResults: '',
   artist: '',
   tracks: '',
@@ -31,6 +33,12 @@ const initialState = {
 
 export default function (state = initialState, action) {
   switch (action.type) {
+    case API_GET_NEW_RELEASES:
+      return {
+        ...state,
+        newReleases: action.payload,
+        error: ''
+      }
     case API_SEARCH:
       return {
         ...state,

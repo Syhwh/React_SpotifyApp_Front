@@ -18,16 +18,11 @@ const loginSchema = Yup.object().shape({
 
 
 function UserLoginForm({ error, loginUser, loginAgency }) {
-  const { authLoginUser } = useContext(AuthContext);
-  const history = useHistory();
 
-  const redirectToHome = (id) => {
-    authLoginUser(id);
-    history.push('/');
-  }
 
   return (<>
     <Formik
+      data-test={'formComponent'}
       initialValues={{
         userEmail: "",
         userPassword: ""
@@ -39,7 +34,7 @@ function UserLoginForm({ error, loginUser, loginAgency }) {
         // loginUser(values, redirectToHome);
       }}
     >
-      {({ isSubmitting }) => {
+      {({ isSubmitting, values }) => {
         return (
           <div className='container'>
             <div className='row'>
@@ -48,14 +43,21 @@ function UserLoginForm({ error, loginUser, loginAgency }) {
                 <Form >
                   {error && <Alert variant='danger'>{error}</Alert>}
                   <FormB.Group controlId="formBasicEmail">
-                    <FormB.Label>Email address</FormB.Label>
-                    <Field type="email" name='userEmail' placeholder='Email' className='form-control' />
+                    <FormB.Label>Email</FormB.Label>
+                    <Field
+                      data-test='inputEmailComponent'
+                      type="email"
+                      name='userEmail'
+                      placeholder='Email'
+                      className='form-control'
+                      value={values.userEmail}
+                      />
                     <ErrorMessage name='userEmail' >
                       {msg => <div className=' alert alert-danger mt-1' role='alert'>{msg}</div>}
                     </ErrorMessage>
                   </FormB.Group>
                   <div className='form-group'>
-                    <label htmlFor="passowrd">Confirm Password</label>
+                    <label htmlFor="passowrd">Password</label>
                     <Field
                       type="password"
                       name="userPassword"
@@ -72,8 +74,8 @@ function UserLoginForm({ error, loginUser, loginAgency }) {
                     <button className='btn btn-primary' type='submit' disabled={isSubmitting}> Login </button>
                   </div>
                 </Form>
-                <div className='mt-4'>Login with your spotify account <Link to='/' onClick={() => window.location = 'http://localhost:3001/login'}  >Login</Link> </div>
-                <div className='mt-4'>Doesn't have an account? <Link to='/signUp'>SignUp</Link> </div>
+                <div className='mt-4'>Login with your spotify account <a href='/' onClick={() => window.location = 'http://localhost:3001/login'}  >Login</a> </div>
+                <div className='mt-4'>Doesn't have an account? <a href='/signUp'>SignUp</a> </div>
               </div>
             </div>
           </div>

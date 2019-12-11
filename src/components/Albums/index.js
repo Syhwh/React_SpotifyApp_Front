@@ -1,35 +1,37 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import Loading from '../Navigation/LoadingComponent';
-import ApiSpotify from '../../utils/ApiSpotify';
+import { getNewReleases } from '../../redux/actions/apiActions';
 import { AlbumsComponent } from './AlbumsComponent';
 import { Row } from 'react-bootstrap';
-import './albumsStyle.scss'
-export function Albums() {
-  const [data, setData] = useState(false);
+import './albumsStyle.scss';
+
+function Albums({ getNewReleases, newReleases }) {
   useEffect(() => {
-    const appToken = localStorage.getItem('appTkn');
-    ApiSpotify.get(`/browse/new-releases?limit=20`, {
-      headers: {
-        Authorization: `Bearer ${appToken}`
-      }
-    })
-      .then(({ data }) => {    
-        setData(data.albums.items)
-      })
+    getNewReleases()
   }, []);
 
-  if (!data) return <Loading />
+  if (!newReleases) return <Loading />
   return (<>
     <Row>
-      <h3 className='mt-2 col-6' >Featured Albums:</h3>
+      <h3 className='mt-4 col-6 offset-2 ' >Featured Albums:</h3>
     </Row>
     <div className='BannerSection mb-4'>
       <div className="cardDisplay  u-fancy-scrollbar mb-4">
         <AlbumsComponent
-          data={data} />
+          data={newReleases} />
       </div>
     </div>
-
-
   </>)
 }
+
+const mapStateToProps = ({ apiData }) => {
+  return {
+    newReleases: apiData.newReleases
+  }
+}
+const mapDispatchToProps = {
+  getNewReleases
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Albums)

@@ -13,6 +13,7 @@ export const LIST_DETAILS = 'LIST_DETAILS';
 export const LIST_SEARCH = 'LIST_SEARCH';
 
 //API actions
+export const API_GET_NEW_RELEASES = 'API_GET_NEW_RELEASES';
 export const API_SEARCH = 'API_SEARCH';
 export const GET_ARTIST = 'GET_ARTIST';
 export const GET_TOP_TRACKS = 'GET_TOP_TRACKS';
