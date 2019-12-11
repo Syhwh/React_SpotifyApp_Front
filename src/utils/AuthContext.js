@@ -26,9 +26,9 @@ export function AuthProvider({ children }) {
       
     }
 
+    history.push('/')
     const userToken = localStorage.getItem('userToken');
     if (userToken) {
-      history.push('/profile')
       ApiSpotify.get(`/me`, {
         headers: {
           Authorization: `Bearer ${userToken}`

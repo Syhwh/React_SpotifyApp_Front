@@ -78,7 +78,7 @@ function UserLoginForm({ error, loginUser }) {
                     Login with your spotify account
                     <a
                       href='/'
-                      onClick={() => window.location = process.env.REACT_APP_BACKEND_API_URL.REDIRECT  || 'http://localhost:3001/login'}
+                      onClick={() => window.location = process.env.REACT_APP_BACKEND_API_URL_REDIRECT || 'http://localhost:3001/login'}
                     >Login</a>
                   </div>
                   <div
