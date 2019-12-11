@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Form, Field, ErrorMessage, Formik } from 'formik';
 import { Form as FormB, Alert } from 'react-bootstrap';
 import ApiBacked from '../../utils/ApiBackend';
@@ -78,13 +79,13 @@ function UserLoginForm({ error, loginUser }) {
                     Login with your spotify account
                     <a
                       href='https://swg-spotify-app-backend.herokuapp.com/login'
-                      
-                    >Login</a>
+
+                    > Login</a>
                   </div>
                   <div
                     className='mt-4'>
                     Doesn't have an account?
-                    <a href='/signUp'>SignUp</a> </div>
+                    <Link to='/signUp'> SignUp</Link> </div>
                 </div>
               </div>
             </div>
