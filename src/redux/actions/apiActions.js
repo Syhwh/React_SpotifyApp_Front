@@ -39,7 +39,7 @@ export function getNewReleases() {
 export function search({ search }) {
   return function (dispatch) {
     const appToken = localStorage.getItem('appTkn')
-    ApiSpotify.get(`/search`, {
+    return ApiSpotify.get(`/search`, {
       params: {
         query: search,
         type: 'album,artist,track',
