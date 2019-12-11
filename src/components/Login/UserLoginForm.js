@@ -77,8 +77,8 @@ function UserLoginForm({ error, loginUser }) {
                     className='mt-4'>
                     Login with your spotify account
                     <a
-                      href='/'
-                      onClick={() => window.location = 'https://swg-spotify-app-backend.herokuapp.com/login'}
+                      href='https://swg-spotify-app-backend.herokuapp.com/login'
+                      
                     >Login</a>
                   </div>
                   <div
