@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { signUpUser } from '../../redux/actions/userActions';
-import { Form as FormB, Alert } from 'react-bootstrap';
+import { Form as FormB } from 'react-bootstrap';
 import { Form, Field, ErrorMessage, Formik } from 'formik';
 import * as Yup from 'yup';
 

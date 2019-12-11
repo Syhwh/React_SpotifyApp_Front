@@ -16,15 +16,9 @@ const albums = {
   }
 };
 
-
-
-
-
 describe('apiActions', () => {
-  beforeEach(() => {
-    moxios.install(ApiSpotify);
-    jest.setTimeout(10000);
-  });
+  beforeEach(() => moxios.install(ApiSpotify));
+
   afterEach(() => moxios.uninstall(ApiSpotify));
   it('should request albums', () => {
     moxios.stubRequest('/browse/new-releases?limit=20', {
@@ -36,7 +30,6 @@ describe('apiActions', () => {
     return (
       getNewReleases()(dispatch)
         .then(() => {
-
           const actions = store.getActions();
           expect(actions[0].type).toBe(API_GET_NEW_RELEASES);
           expect(actions[0].payload).toMatchObject(albums.albums.items);

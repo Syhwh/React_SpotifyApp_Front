@@ -7,7 +7,7 @@ export function AlbumInfo({ album }) {
     <> <div className='col-2'>
       <img src={
         album.images[0] ?
-          album.images[0].url : noImage} className='img-thumbnail img-circle' />
+          album.images[0].url : noImage} className='img-thumbnail img-circle' alt='album' />
     </div>
       <div className='col'>
         <h3>
@@ -15,7 +15,7 @@ export function AlbumInfo({ album }) {
         </h3>
         <p><strong>By</strong> {album.artists[0].name} </p>
         <p>
-          <a href={album.external_urls.spotify} target='_blank'>
+          <a href={album.external_urls.spotify} target='_blank' rel="noopener noreferrer" >
             go to the album page  </a>
         </p>
         <p className='text-muted'>{album.copyrights[0].text} </p>

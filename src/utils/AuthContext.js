@@ -12,12 +12,8 @@ export function AuthProvider({ children }) {
 
   //hooks first time run
   useEffect(() => {
-
-
-
     ApiBacked.get(`/spotify/${process.env.REACT_APP_SPOTIFY_CLIENT_ID}/${process.env.REACT_APP_SPOTIFY_CLIENT_SECRET}`)
       .then(({ data }) => {
-        console.log(data.body)
         localStorage.setItem('appTkn', data.body.access_token)
       })
     const userAccessToken = queryString.parse(window.location.search);
@@ -26,7 +22,7 @@ export function AuthProvider({ children }) {
       
     }
 
-    history.push('/')
+   
     const userToken = localStorage.getItem('userToken');
     if (userToken) {
       ApiSpotify.get(`/me`, {
@@ -35,9 +31,9 @@ export function AuthProvider({ children }) {
         }
       })
         .then(({ data }) => {
-          console.log(data)
+        
           setUser(data)
-          console.log('user' + user)
+        
           history.push('/profile')
         })
         .catch((error) => console.log(error))
