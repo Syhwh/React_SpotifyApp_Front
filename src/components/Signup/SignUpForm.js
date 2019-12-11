@@ -24,7 +24,7 @@ const loginSchema = Yup.object().shape({
     .oneOf([true], 'Must Accept Terms and Conditions'),
 });
 
-function SignUpForm({ error, signUpUser, signUpAgency }) {
+function SignUpForm({ error, signUpUser }) {
   const history = useHistory();
   return (<>
     <Formik

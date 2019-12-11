@@ -18,7 +18,8 @@ import {
 export function getNewReleases() {
   return function (dispatch) {
     const appToken = localStorage.getItem('appTkn');
-    ApiSpotify.get(`/browse/new-releases?limit=20`, {
+    return ApiSpotify
+    .get(`/browse/new-releases?limit=20`, {
       headers: {
         Authorization: `Bearer ${appToken}`
       }

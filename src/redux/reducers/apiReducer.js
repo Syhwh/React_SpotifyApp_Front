@@ -16,7 +16,7 @@ import {
   ERROR
 } from "../actions/types"
 
-const initialState = {
+export const initialState = {
   newReleases: '',
   searchResults: '',
   artist: '',
